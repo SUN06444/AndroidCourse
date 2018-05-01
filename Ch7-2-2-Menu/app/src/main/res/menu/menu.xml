@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/left"
+        android:icon="@drawable/leftarrow"
+        android:title="上一頁"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/right"
+        android:icon="@drawable/rightarrow"
+        android:title="下一頁"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/toF"
+        android:title="轉華氏" />
+    <item
+        android:id="@+id/toC"
+        android:title="轉攝氏" />
+    <item
+        android:id="@+id/subMenu"
+        android:title="子選單"
+        app:showAsAction="never">
+        <menu>
+            <item android:id="@+id/item01" android:title="子項目 1"></item>
+            <item android:id="@+id/item02" android:title="子項目 2"></item>
+        </menu>
+    </item>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/red"
+            android:orderInCategory="1"
+            app:showAsAction="never"
+            android:title="紅色">
+        </item>
+        <item
+            android:id="@+id/yellow"
+            android:orderInCategory="2"
+            app:showAsAction="never"
+            android:title="黃色">
+        </item>
+        <item
+            android:id="@+id/green"
+            android:orderInCategory="3"
+            app:showAsAction="never"
+            android:title="綠色">
+        </item>
+    </group>
+</menu>
