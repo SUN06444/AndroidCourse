@@ -7,6 +7,7 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity {
     FirstFragment First = new FirstFragment();
     SecondFragment Second = new SecondFragment();
+    SecondFragment arg = new SecondFragment().newInstance("改為自帶參數片段");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,5 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void btn_delete(View v){
         getSupportFragmentManager().beginTransaction().remove(Second).commit();
+    }
+
+    public void btn(View v){
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame, arg).commit();
     }
 }
