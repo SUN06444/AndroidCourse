@@ -2,5 +2,6 @@
     <string name="app_name">Ch7_5</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="First_blank_fragment">第一個 Fragment 片段</string>
+    <string name="Second_blank_fragment">第二個 Fragment 片段</string>
 </resources>
