@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         Button btn_single = (Button)findViewById(R.id.btn_single);
         btn_single.setOnClickListener(btn_single_listener);
 
+        Button btn_multi = (Button)findViewById(R.id.btn_multi);
+        btn_multi.setOnClickListener(btn_multi_listener);
 
     }
 
@@ -92,6 +95,46 @@ public class MainActivity extends AppCompatActivity {
             builder.setTitle("請選擇一個顏色")
                     .setItems(singleOptions,dialog_single_option)
                     .setNegativeButton("取消", null)
+                    .create()
+                    .show();
+        }
+    };
+
+    String[] multiItems = { "Samsung", "HTC", "Apple", "ASUS" };
+    boolean[] multiChecked = new boolean[multiItems.length];
+
+    DialogInterface.OnClickListener dialog_multi_Ok = new DialogInterface.OnClickListener(){
+        public void onClick(DialogInterface dialogInterface, int i){
+            String msg="";
+            for (int index=0; index<multiItems.length; index++){
+                if(multiChecked[index]){
+                    msg+= multiItems[index]+"\n";
+                }
+            }
+            TextView txv_output = (TextView)findViewById(R.id.txv_output);
+            txv_output.setText(msg);
+
+        }
+    };
+
+    DialogInterface.OnClickListener dialog_multi_Cancel = new DialogInterface.OnClickListener(){
+        public void onClick(DialogInterface dialogInterface, int i){
+        }
+    };
+
+    DialogInterface.OnMultiChoiceClickListener dialog_multi_Choice_listener = new DialogInterface.OnMultiChoiceClickListener(){
+        public void onClick(DialogInterface dialogInterface, int i,boolean isChecked){
+            Toast.makeText(MainActivity.this,multiChecked[i]+(isChecked? "勾選":"沒有勾選" ),Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    View.OnClickListener btn_multi_listener = new View.OnClickListener(){
+        public void onClick(View v){
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("請勾選項目:")
+                    .setPositiveButton("確定", dialog_multi_Ok)
+                    .setNegativeButton("取消", dialog_multi_Cancel)
+                    .setMultiChoiceItems(multiItems, multiChecked, dialog_multi_Choice_listener)
                     .create()
                     .show();
         }
