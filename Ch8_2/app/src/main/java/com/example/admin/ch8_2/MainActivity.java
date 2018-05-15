@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v){
             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
             String[] singleOptions = { "紅色", "黃色", "綠色" };
-            builder.setTitle("確認")
+            builder.setTitle("請選擇一個顏色")
                     .setItems(singleOptions,dialog_single_option)
                     .setNegativeButton("取消", null)
                     .create()
