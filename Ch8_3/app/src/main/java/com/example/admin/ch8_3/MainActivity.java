@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements EditNameDialog.EditNameDialogListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +16,9 @@ public class MainActivity extends AppCompatActivity {
 
         Button btn_fragment1 = (Button)findViewById(R.id.btn_fragment1);
         btn_fragment1.setOnClickListener(btn_fragment1_click);
+
+        Button btn_editname = (Button)findViewById(R.id.btn_editname);
+        btn_editname.setOnClickListener(btn_editname_click);
 
     }
 
@@ -39,4 +42,18 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "按下取消按鈕!", Toast.LENGTH_SHORT).show();
         finish();
     }
+
+    public void onFinishEditDialog(String inputText){
+        Toast.makeText(this, "您好,"+inputText, Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+    //btn_fragment1_Click的監聽事件
+    View.OnClickListener btn_editname_click = new  View.OnClickListener(){
+        public void onClick(View v){
+            EditNameDialog dlg = new EditNameDialog();
+            FragmentManager fm = getSupportFragmentManager();
+            dlg.show(fm, "dialog");
+        }
+    };
 }
